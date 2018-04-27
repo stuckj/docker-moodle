@@ -10,6 +10,10 @@ trap "kill -TERM -$pgrp; exit" EXIT TERM KILL SIGKILL SIGTERM SIGQUIT
 #start up cron
 /usr/sbin/cron
 
+# Disable apache SSL if we're behind an SSL proxy
+if [ ${BEHIND_SSL_PROXY} -eq 1 ]; then
+    a2dismod ssl && a2dissite default-ssl 
+fi
 
 source /etc/apache2/envvars
 tail -F /var/log/apache2/* &

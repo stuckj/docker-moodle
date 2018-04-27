@@ -63,6 +63,9 @@ Update the `moodle_variables.env` file with your information. Please note that w
 Once the environment file is filled in you may bring up the service with:
 `docker-compose up -d`
 
+* SSL Reverse Proxy
+
+If using an SSL reverse proxy in front of moodle, then set BEHIND_SSL_PROXY in `moodle_variables.env` to properly configure apache.
 
 
 ## Caveats

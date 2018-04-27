@@ -36,6 +36,9 @@ RUN apt-get update && \
 COPY moodlecron /etc/cron.d/moodlecron
 RUN chmod 0644 /etc/cron.d/moodlecron
 
+# Used only if behind a reverse SSL proxy...
+COPY apache-proxy-servername.conf /etc/apache2/conf-available/apache-proxy-servername.conf
+
 # Enable SSL, moodle requires it
 RUN a2enmod ssl && a2ensite default-ssl  #if using proxy dont need actually secure connection
 
